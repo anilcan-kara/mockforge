@@ -1,6 +1,6 @@
 [package]
 name = "mockforge"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Anilcan Kara <anilcan.kara@outlook.com>"]
 description = "MockForge: The Ultimate Multi-Tenant Mock API Gateway"

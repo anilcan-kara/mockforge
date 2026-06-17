@@ -67,9 +67,39 @@ jobs:
         run: |
           mv target/${{ matrix.target }}/release/mockforge ${{ matrix.asset_name }}
 
-      - name: Release Asset
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset_name }}
+          path: ${{ matrix.asset_name }}
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Flatten artifacts directory
+        run: |
+          mkdir dist
+          find ./artifacts -type f -exec cp {} ./dist/ \;
+          ls -la ./dist/
+
+      - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ matrix.asset_name }}
+          files: |
+            dist/mockforge-linux-x64
+            dist/mockforge-linux-arm64
+            dist/mockforge-darwin-x64
+            dist/mockforge-darwin-arm64
+            dist/mockforge-win32-x64.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
