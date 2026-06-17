@@ -5,14 +5,15 @@ mod state;
 use axum::{
     body::Body,
     extract::{Query, State},
-    http::{HeaderMap, Method, StatusCode, Uri},
+    http::{HeaderMap, Method, Uri},
     response::{IntoResponse, Response},
     routing::any,
     Router,
 };
 use clap::Parser;
 use colored::Colorize;
-use config::{MockConfig, MockResponse, Route};
+use config::{MockConfig, Route};
+use notify::Watcher;
 use rules::RuleCondition;
 use state::StateStore;
 use std::collections::HashMap;
@@ -22,7 +23,7 @@ use std::sync::{Arc, RwLock};
 use tower_http::cors::CorsLayer;
 
 #[derive(Parser, Debug)]
-#[command(name = "mockforge", version = "0.1.0", about = "MockForge API Gateway")]
+#[command(name = "mockforge", version = "0.1.1", about = "MockForge API Gateway")]
 struct Args {
     #[arg(short, long, default_value = "mockforge.yaml")]
     config: String,

@@ -1,6 +1,6 @@
 {
   "name": "mockforge-gateway",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MockForge: The Ultimate Multi-Tenant Mock API Gateway",
   "main": "bin/cli.js",
   "bin": {
