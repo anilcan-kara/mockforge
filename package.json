@@ -1,0 +1,35 @@
+{
+  "name": "mockforge-gateway",
+  "version": "0.1.0",
+  "description": "MockForge: The Ultimate Multi-Tenant Mock API Gateway",
+  "main": "bin/cli.js",
+  "bin": {
+    "mockforge": "./bin/cli.js",
+    "mockforge-gateway": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anilcan-kara/mockforge.git"
+  },
+  "keywords": [
+    "mock",
+    "api",
+    "gateway",
+    "gateway-mock",
+    "multi-tenant",
+    "rust",
+    "axum",
+    "performance",
+    "dynamic",
+    "crud"
+  ],
+  "author": "Anilcan Kara <anilcan.kara@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anilcan-kara/mockforge/issues"
+  },
+  "homepage": "https://github.com/anilcan-kara/mockforge#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

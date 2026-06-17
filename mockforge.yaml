@@ -1,0 +1,53 @@
+tenants:
+  - name: auth-service
+    prefix: /auth
+    routes:
+      - path: /users
+        method: GET
+        state: users
+        default:
+          status: 200
+          body:
+            - id: "1"
+              name: "Anilcan Kara"
+              role: "admin"
+            - id: "2"
+              name: "Nozich Bot"
+              role: "assistant"
+      - path: /users/:id
+        method: GET
+        state: users
+        rules:
+          - if: "params.id == '404'"
+            status: 404
+            body: { "error": "User not found" }
+        default:
+          status: 404
+          body: { "error": "User not found in state store" }
+      - path: /users
+        method: POST
+        state: users
+      - path: /users/:id
+        method: PUT
+        state: users
+      - path: /users/:id
+        method: DELETE
+        state: users
+      - path: /status
+        method: GET
+        rules:
+          - if: "headers.x-api-key != 'secret'"
+            status: 401
+            body: { "error": "Unauthorized" }
+        default:
+          status: 200
+          body: { "status": "healthy" }
+
+  - name: payment-service
+    host: payment.local
+    routes:
+      - path: /charge
+        method: POST
+        default:
+          status: 200
+          body: { "chargeId": "ch_12345", "status": "succeeded" }
