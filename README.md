@@ -54,6 +54,14 @@ cargo install --git https://github.com/anilcan-kara/mockforge
 mockforge --config mockforge.yaml
 ```
 
+### 4. Direct Binary Download
+You can download the precompiled static binary for your platform directly from the GitHub Release assets:
+- 💻 **Windows (x64)**: [mockforge-win32-x64.exe](https://github.com/anilcan-kara/mockforge/releases/download/v0.1.2/mockforge-win32-x64.exe)
+- 🐧 **Linux (x64)**: [mockforge-linux-x64](https://github.com/anilcan-kara/mockforge/releases/download/v0.1.2/mockforge-linux-x64)
+- 🐧 **Linux (ARM64)**: [mockforge-linux-arm64](https://github.com/anilcan-kara/mockforge/releases/download/v0.1.2/mockforge-linux-arm64)
+- 🍎 **macOS (x64)**: [mockforge-darwin-x64](https://github.com/anilcan-kara/mockforge/releases/download/v0.1.2/mockforge-darwin-x64)
+- 🍎 **macOS (ARM64)**: [mockforge-darwin-arm64](https://github.com/anilcan-kara/mockforge/releases/download/v0.1.2/mockforge-darwin-arm64)
+
 ---
 
 ## 🛠️ Configuration Guide (`mockforge.yaml`)

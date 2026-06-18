@@ -1,0 +1,48 @@
+tenants:
+  - name: subscription-billing
+    prefix: /billing
+    routes:
+      # Get all active subscription plans
+      - path: /plans
+        method: GET
+        state: plans
+        default:
+          status: 200
+          body:
+            - id: "plan_hobby"
+              name: "Hobby Plan"
+              amount: 0.00
+              interval: "month"
+            - id: "plan_pro"
+              name: "Professional Plan"
+              amount: 29.00
+              interval: "month"
+            - id: "plan_enterprise"
+              name: "Enterprise Plan"
+              amount: 299.00
+              interval: "month"
+
+      # Get customer profile details
+      - path: /customers/:id
+        method: GET
+        state: customers
+        default:
+          status: 200
+          body:
+            id: "cust_default"
+            email: "user@example.com"
+            status: "active"
+            payment_method: "pm_card_visa"
+
+      # Register a new customer
+      - path: /customers
+        method: POST
+        state: customers
+
+      # Delete / cancel subscription
+      - path: /subscriptions/:id
+        method: DELETE
+        state: subscriptions
+        default:
+          status: 200
+          body: { "status": "canceled", "canceled_at": "2026-06-18T23:59:59Z" }

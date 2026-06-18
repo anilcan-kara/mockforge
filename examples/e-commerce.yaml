@@ -1,0 +1,60 @@
+tenants:
+  - name: e-commerce-gateway
+    prefix: /shop
+    routes:
+      # Get all products from memory
+      - path: /products
+        method: GET
+        state: products
+        default:
+          status: 200
+          body:
+            - id: "p1"
+              name: "Mechanical Keyboard"
+              price: 99.99
+              stock: 25
+            - id: "p2"
+              name: "Wireless Ergonomic Mouse"
+              price: 49.99
+              stock: 50
+            - id: "p3"
+              name: "4K Ultra-Wide Monitor"
+              price: 349.99
+              stock: 12
+
+      # Get product details by ID
+      - path: /products/:id
+        method: GET
+        state: products
+        rules:
+          - if: "params.id == 'p99'"
+            status: 404
+            body: { "error": "Out of stock / Discontinued" }
+        default:
+          status: 404
+          body: { "error": "Product not found" }
+
+      # Add new product (Stateful POST)
+      - path: /products
+        method: POST
+        state: products
+
+      # Update product details (Stateful PUT)
+      - path: /products/:id
+        method: PUT
+        state: products
+
+      # Delete product (Stateful DELETE)
+      - path: /products/:id
+        method: DELETE
+        state: products
+
+      # Checkout process mock
+      - path: /checkout
+        method: POST
+        default:
+          status: 200
+          body:
+            orderId: "ord_998124"
+            status: "processing"
+            message: "Order placed successfully. Payment authorized."
