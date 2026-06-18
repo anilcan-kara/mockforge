@@ -15,7 +15,7 @@ Only the latest released version of this package is actively supported and recei
 
 **Please do not report security vulnerabilities via public GitHub issues.**
 
-Instead, please send a detailed report to **anilcan.kara@outlook.com**.
+Instead, please send a detailed report to **anilcankara.com@gmail.com**.
 
 Include the following information in your report:
 - Package name and version.
